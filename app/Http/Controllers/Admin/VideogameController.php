@@ -22,7 +22,7 @@ class VideogameController extends Controller
      */
     public function create()
     {
-        return view("videgames.create");
+        return view("videogames.create");
     }
 
     /**
@@ -30,7 +30,17 @@ class VideogameController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $newVideogame = new Videogame();
+        $newVideogame->title = $data["title"];
+        $newVideogame->description = $data["description"];
+        $newVideogame->release_date = $data["release_date"];
+        $newVideogame->price = $data["price"];
+
+        $newVideogame->save();
+
+        return redirect()->route("admin.videogames.show", $newVideogame);
     }
 
     /**
@@ -44,9 +54,9 @@ class VideogameController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Videogame $videogame)
     {
-        //
+        return view("videogames.edit", compact("videogame"));
     }
 
     /**
