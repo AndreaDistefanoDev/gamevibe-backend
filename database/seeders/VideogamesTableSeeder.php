@@ -25,8 +25,14 @@ class VideogamesTableSeeder extends Seeder
             ['title' => 'Rocket League', 'description' => 'Calcio con le automobili.', 'release_date' => '2015-07-07', 'price' => 0],
         ];
 
+
         foreach ($videogames as $game) {
-            Videogame::create($game);
+            $newVideogame = new Videogame();
+            $newVideogame->title = $game['title'];
+            $newVideogame->description = $game['description'];
+            $newVideogame->release_date = $game['release_date'];
+            $newVideogame->price = $game['price'];
+            $newVideogame->save();
         }
     }
 }
