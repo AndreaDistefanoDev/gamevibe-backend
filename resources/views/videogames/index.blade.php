@@ -22,6 +22,7 @@
                         <tr>
                             <td>{{ $videogame->cover_image }}</td>
                             <td>{{ $videogame->title }}</td>
+                            <td>{{ $videogame->genre }}</td>
                             <td>{{ $videogame->release_date }}</td>
                             <td>{{ $videogame->price }}</td>
                             <td><a href="{{ route('admin.videogames.show', $videogame) }}">Visualizza</a></td>

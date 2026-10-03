@@ -11,6 +11,11 @@
                     <input type="text" class="form-control" id="title" name="title" value="{{ $videogame->title }}">
                 </div>
                 <div class="mb-3">
+                    <label for="genre" class="form-label">Genere</label>
+                    <input type="text" class="form-control" id="genre" name="genre"
+                        value="{{ $videogame->genre }}">
+                </div>
+                <div class="mb-3">
                     <label for="description" class="form-label">Descrizione</label>
                     <textarea class="form-control" id="description" name="description" rows="3">{{ $videogame->description }}</textarea>
                 </div>
