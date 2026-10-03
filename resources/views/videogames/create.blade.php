@@ -8,19 +8,19 @@
             <div class="form-control mb-3">
                 <div class="mb-3">
                     <label for="title" class="form-label">Titolo</label>
-                    <input type="text" class="form-control" id="title" name="title" required>
+                    <input type="text" class="form-control" id="title" name="title">
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Descrizione</label>
-                    <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                    <textarea class="form-control" id="description" name="description" rows="3"></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="release_date" class="form-label">Data di uscita</label>
-                    <input type="date" class="form-control" id="release_date" name="release_date" required>
+                    <input type="date" class="form-control" id="release_date" name="release_date">
                 </div>
                 <div class="mb-3">
                     <label for="price" class="form-label">Prezzo</label>
-                    <input type="text" class="form-control" id="price" name="price" required>
+                    <input type="text" class="form-control" id="price" name="price">
                 </div>
                 <div class="mb-3">
                     <label for="cover_image" class="form-label">Immagine di copertina</label>

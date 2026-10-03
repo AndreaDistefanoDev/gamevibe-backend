@@ -2,6 +2,10 @@
 @section('title', 'Videogames List')
 @section('content')
 
+    <div class="d-flex py-4 gap-2">
+        <a class="btn btn-outline-primary" href="{{ route('admin.videogames.create') }}">Aggiungi un videogame</a>
+    </div>
+
     <div class="card shadow-sm">
         <div class="table-responsive">
             <table class="table table-hover align-middle mb-0">
