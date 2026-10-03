@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title', 150);
             $table->text('description')->nullable();
             $table->date('release_date')->nullable();
-            $table->decimal('price', 6, 2)->nullable();
+            $table->string('price')->nullable();
             $table->string('cover_image')->nullable();
             $table->timestamps();
         });
