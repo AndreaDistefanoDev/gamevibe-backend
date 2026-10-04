@@ -20,6 +20,22 @@
                         @endforeach
                     </select>
                 </div>
+
+                {{-- Platforms --}}
+                <div class="mb-3">
+                    <div class="mb-1">Piattaforma</div>
+                    @foreach ($platforms as $platform)
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="platforms[]" value="{{ $platform->id }}"
+                                id="platform-{{ $platform->id }}"
+                                {{ $videogame->platforms->contains($platform->id) ? 'checked' : '' }}>
+                            <label class="form-check-label" for="platform-{{ $platform->id }}">
+                                {{ $platform->name }}
+                            </label>
+                        </div>
+                    @endforeach
+
+                </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Descrizione</label>
                     <textarea class="form-control" id="description" name="description" rows="3">{{ $videogame->description }}</textarea>

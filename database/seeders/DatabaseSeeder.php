@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             GenresTableSeeder::class,
-            VideogamesTableSeeder::class,
             PlatformsTableSeeder::class,
+            VideogamesTableSeeder::class,
         ]);
     }
 }

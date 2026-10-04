@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Genre;
+use App\Models\Platform;
 use App\Models\Videogame;
 use Illuminate\Http\Request;
 
@@ -23,8 +24,9 @@ class VideogameController extends Controller
      */
     public function create()
     {
+        $platforms = Platform::all();
         $genres = Genre::all();
-        return view("videogames.create", compact("genres"));
+        return view("videogames.create", compact("genres", "platforms"));
     }
 
     /**
@@ -43,6 +45,8 @@ class VideogameController extends Controller
 
         $newVideogame->save();
 
+        $newVideogame->platforms()->attach($data["platforms"]);
+
         return redirect()->route("admin.videogames.show", $newVideogame);
     }
 
@@ -59,8 +63,9 @@ class VideogameController extends Controller
      */
     public function edit(Videogame $videogame)
     {
+        $platforms = Platform::all();
         $genres = Genre::all();
-        return view("videogames.edit", compact("videogame", "genres"));
+        return view("videogames.edit", compact("videogame", "genres", "platforms"));
     }
 
     /**

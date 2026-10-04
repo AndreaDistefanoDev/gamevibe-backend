@@ -10,9 +10,17 @@
     </div>
 
     <div class="card shadow-sm">
-        <div class="card-body">
+        <div class="card-body d-flex flex-column">
             <h5 class="card-title">{{ $videogame->title }}</h5>
             <p class="card-text">Genere: {{ $videogame->genre->name }}</p>
+            @if (count($videogame->platforms) > 0)
+                <p>Platforms:
+
+                    @foreach ($videogame->platforms as $platform)
+                        <span class="badge" style="background-color:{{ $platform->color }}">{{ $platform->name }}</span>
+                    @endforeach
+            @endif
+            </p>
             <p class="card-text">{{ $videogame->description }}</p>
             <p class="card-text"><strong>Release Date:</strong> {{ $videogame->release_date }}</p>
             <p class="card-text"><strong>Price:</strong> {{ $videogame->price }}</p>
