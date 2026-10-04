@@ -11,9 +11,14 @@
                     <input type="text" class="form-control" id="title" name="title" value="{{ $videogame->title }}">
                 </div>
                 <div class="mb-3">
-                    <label for="genre" class="form-label">Genere</label>
-                    <input type="text" class="form-control" id="genre" name="genre"
-                        value="{{ $videogame->genre }}">
+                    <label for="genre_id" class="form-label">Genere</label>
+                    <select class="form-select" id="genre_id" name="genre_id">
+                        @foreach ($genres as $genre)
+                            <option value="{{ $genre->id }}" {{ $videogame->genre_id == $genre->id ? 'selected' : '' }}>
+                                {{ $genre->name }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Descrizione</label>

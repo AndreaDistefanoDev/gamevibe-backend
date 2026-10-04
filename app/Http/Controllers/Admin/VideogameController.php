@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Genre;
 use App\Models\Videogame;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,8 @@ class VideogameController extends Controller
      */
     public function create()
     {
-        return view("videogames.create");
+        $genres = Genre::all();
+        return view("videogames.create", compact("genres"));
     }
 
     /**
@@ -34,6 +36,7 @@ class VideogameController extends Controller
 
         $newVideogame = new Videogame();
         $newVideogame->title = $data["title"];
+        $newVideogame->genre_id = $data["genre_id"];
         $newVideogame->description = $data["description"];
         $newVideogame->release_date = $data["release_date"];
         $newVideogame->price = $data["price"];
@@ -56,7 +59,8 @@ class VideogameController extends Controller
      */
     public function edit(Videogame $videogame)
     {
-        return view("videogames.edit", compact("videogame"));
+        $genres = Genre::all();
+        return view("videogames.edit", compact("videogame", "genres"));
     }
 
     /**
@@ -67,6 +71,7 @@ class VideogameController extends Controller
         $data = $request->all();
 
         $videogame->title = $data["title"];
+        $videogame->genre_id = $data["genre_id"];
         $videogame->description = $data["description"];
         $videogame->release_date = $data["release_date"];
         $videogame->price = $data["price"];

@@ -13,8 +13,10 @@
                     <tr>
                         <th style="width: 80px">Cover</th>
                         <th>Titolo</th>
+                        <th>Genere</th>
                         <th>Uscita</th>
                         <th>Prezzo</th>
+                        <th>Azioni</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -22,7 +24,7 @@
                         <tr>
                             <td>{{ $videogame->cover_image }}</td>
                             <td>{{ $videogame->title }}</td>
-                            <td>{{ $videogame->genre }}</td>
+                            <td>{{ $videogame->genre->name }}</td>
                             <td>{{ $videogame->release_date }}</td>
                             <td>{{ $videogame->price }}</td>
                             <td><a href="{{ route('admin.videogames.show', $videogame) }}">Visualizza</a></td>

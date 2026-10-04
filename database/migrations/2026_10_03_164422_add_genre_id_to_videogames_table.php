@@ -12,7 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('videogames', function (Blueprint $table) {
-            //
+            //rimuoviamo la colonna genre dalla tabella videogames
+            $table->dropColumn('genre');
+
+            //aggiungiamo la colonnae la constraint
+            $table->foreignId('genre_id')->default(1)->constrained();
         });
     }
 
@@ -22,7 +26,14 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('videogames', function (Blueprint $table) {
-            //
+            //ricreiamo la colonna genre
+            $table->string('genre');
+
+            //rimuoviamo la constraint
+            $table->dropForeign('videogames_genre_id_foreign');
+
+            //rimuoviamo la colonna
+            $table->dropColumn(('genre_id'));
         });
     }
 };
