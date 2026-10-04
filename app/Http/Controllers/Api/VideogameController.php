@@ -19,4 +19,14 @@ class VideogameController extends Controller
 
         ]);
     }
+
+    public function show(Videogame $videogame)
+    {
+        $videogame->load('platforms', 'genre');
+
+        return response()->json([
+            "success" => true,
+            "data" => $videogame
+        ]);
+    }
 }
