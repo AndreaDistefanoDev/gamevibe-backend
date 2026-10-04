@@ -45,7 +45,9 @@ class VideogameController extends Controller
 
         $newVideogame->save();
 
-        $newVideogame->platforms()->attach($data["platforms"]);
+        if ($request->has("platforms")) {
+            $newVideogame->platforms()->attach($data["platforms"]);
+        }
 
         return redirect()->route("admin.videogames.show", $newVideogame);
     }
@@ -80,7 +82,15 @@ class VideogameController extends Controller
         $videogame->description = $data["description"];
         $videogame->release_date = $data["release_date"];
         $videogame->price = $data["price"];
+
         $videogame->update();
+
+        if ($request->has("platforms")) {
+            $videogame->platforms()->sync($data["platforms"]);
+        } else {
+            $videogame->platforms()->detach();
+        }
+
         return redirect()->route("admin.videogames.show", $videogame);
     }
 
