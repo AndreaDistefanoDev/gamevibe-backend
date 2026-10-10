@@ -16,10 +16,16 @@
             <a class="navbar-brand fw-bold" href="{{ route('admin.videogames.index') }}">
                 <i class="bi bi-controller me-2"></i>GameVibe
             </a>
-            <div class="navbar-nav flex-row gap-3">
+            <div class="navbar-nav flex-row gap-3 me-auto ms-4">
                 <a class="nav-link" href="{{ route('admin.videogames.index') }}">Lista</a>
                 <a class="nav-link" href="{{ route('admin.videogames.create') }}">Aggiungi</a>
             </div>
+            <form action="{{ route('logout') }}" method="POST" class="m-0">
+                @csrf
+                <button type="submit" class="btn btn-outline-light btn-sm">
+                    <i class="bi bi-box-arrow-right me-1"></i>Esci
+                </button>
+            </form>
         </div>
     </nav>
 
