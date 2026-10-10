@@ -10,12 +10,23 @@
     @vite('resources/js/app.js')
 </head>
 
-<body>
+<body class="bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-dark mb-4" data-bs-theme="dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="{{ route('admin.videogames.index') }}">
+                <i class="bi bi-controller me-2"></i>GameVibe
+            </a>
+            <div class="navbar-nav flex-row gap-3">
+                <a class="nav-link" href="{{ route('admin.videogames.index') }}">Lista</a>
+                <a class="nav-link" href="{{ route('admin.videogames.create') }}">Aggiungi</a>
+            </div>
+        </div>
+    </nav>
 
-    <div class="container">
-        <h1>@yield('title')</h1>
-    </div>
-    @yield('content')
+    <main class="container pb-5">
+        <h1 class="mb-4">@yield('title')</h1>
+        @yield('content')
+    </main>
 </body>
 
 </html>

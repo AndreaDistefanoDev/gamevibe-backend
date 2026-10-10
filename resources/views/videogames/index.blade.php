@@ -1,9 +1,11 @@
 @extends('layouts.videogames')
-@section('title', 'Videogames List')
+@section('title', 'Lista Videogiochi')
 @section('content')
 
-    <div class="d-flex py-4 gap-2">
-        <a class="btn btn-outline-primary" href="{{ route('admin.videogames.create') }}">Aggiungi un videogame</a>
+    <div class="d-flex justify-content-end mb-3">
+        <a class="btn btn-dark" href="{{ route('admin.videogames.create') }}">
+            <i class="bi bi-plus-lg me-1"></i>Aggiungi un videogame
+        </a>
     </div>
 
     <div class="card shadow-sm">
@@ -22,12 +24,19 @@
                 <tbody>
                     @foreach ($videogames as $videogame)
                         <tr>
-                            <td>{{ $videogame->cover_image }}</td>
+                            <td>
+                                @if ($videogame->image)
+                                    <img src="{{ asset('storage/' . $videogame->image) }}" alt="{{ $videogame->title }}"
+                                        class="rounded object-fit-cover" style="width: 60px; height: 60px">
+                                @endif
+                            </td>
                             <td>{{ $videogame->title }}</td>
-                            <td>{{ $videogame->genre->name }}</td>
+                            <td><span class="badge text-bg-primary">{{ $videogame->genre->name }}</span></td>
                             <td>{{ $videogame->release_date }}</td>
                             <td>{{ $videogame->price }}</td>
-                            <td><a href="{{ route('admin.videogames.show', $videogame) }}">Visualizza</a></td>
+                            <td><a class="btn btn-dark btn-sm" href="{{ route('admin.videogames.show', $videogame) }}">
+                                    <i class="bi bi-eye me-1"></i>Visualizza
+                                </a></td>
                         </tr>
                     @endforeach
                 </tbody>

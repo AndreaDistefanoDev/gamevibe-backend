@@ -93,9 +93,11 @@ class VideogameController extends Controller
 
         if (array_key_exists("image", $data)) {
 
-          Storage::delete($videogame->image);
-           $img_url = Storage::putFile('videogames', $data["image"]);
-           $videogame->image = $img_url;
+            if ($videogame->image) {
+                Storage::delete($videogame->image);
+            }
+            $img_url = Storage::putFile('videogames', $data["image"]);
+            $videogame->image = $img_url;
         }
 
         $videogame->update();
@@ -120,6 +122,5 @@ class VideogameController extends Controller
 
         $videogame->delete();
         return redirect()->route("admin.videogames.index");
-
     }
 }
