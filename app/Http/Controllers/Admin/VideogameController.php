@@ -44,9 +44,9 @@ class VideogameController extends Controller
         $newVideogame->release_date = $data["release_date"];
         $newVideogame->price = $data["price"];
 
-        if (array_key_exists("cover_image", $data)) {
+        if (array_key_exists("image", $data)) {
 
-            $img_url = Storage::putFile('videogames', $data["cover_image"]);
+            $img_url = Storage::putFile('videogames', $data["image"]);
             $newVideogame->image = $img_url;
         }
 
@@ -91,10 +91,11 @@ class VideogameController extends Controller
         $videogame->price = $data["price"];
 
 
-        if (array_key_exists("cover_image", $data)) {
+        if (array_key_exists("image", $data)) {
 
-            $img_url = Storage::putFile('videogames', $data["cover_image"]);
-            $videogame->image = $img_url;
+          Storage::delete($videogame->image);
+           $img_url = Storage::putFile('videogames', $data["image"]);
+           $videogame->image = $img_url;
         }
 
         $videogame->update();
@@ -113,7 +114,12 @@ class VideogameController extends Controller
      */
     public function destroy(Videogame $videogame)
     {
+        if ($videogame->image) {
+            Storage::delete($videogame->image);
+        }
+
         $videogame->delete();
         return redirect()->route("admin.videogames.index");
+
     }
 }

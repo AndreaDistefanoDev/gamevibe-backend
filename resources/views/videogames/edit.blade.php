@@ -53,7 +53,13 @@
                 <div class="mb-3">
                     <label for="image" class="form-label">Immagine di copertina</label>
                     <input type="file" class="form-control" id="image" name="image">
+                    @if ($videogame->image)
+                        <div id="videogame-cover" class="mb-3">
+                            <img class="img-fluid w-25" src="{{ asset('storage/' . $videogame->image) }}" alt="copertina">
+                        </div>
+                    @endif
                 </div>
+
                 <input type="submit" class="btn btn-primary" value="Salva"></input>
 
             </div>
