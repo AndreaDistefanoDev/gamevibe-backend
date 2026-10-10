@@ -2,7 +2,7 @@
 @section('title', 'Modifica Videogame')
 @section('content')
     <div class="container">
-        <form action="{{ route('admin.videogames.update', $videogame) }}" method="POST">
+        <form action="{{ route('admin.videogames.update', $videogame) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="form-control mb-3">
@@ -51,8 +51,8 @@
                         value="{{ $videogame->price }}">
                 </div>
                 <div class="mb-3">
-                    <label for="cover_image" class="form-label">Immagine di copertina</label>
-                    <input type="file" class="form-control" id="cover_image" name="cover_image">
+                    <label for="image" class="form-label">Immagine di copertina</label>
+                    <input type="file" class="form-control" id="image" name="image">
                 </div>
                 <input type="submit" class="btn btn-primary" value="Salva"></input>
 

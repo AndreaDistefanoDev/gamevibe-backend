@@ -2,6 +2,13 @@
 @section('title', $videogame->title)
 @section('content')
 
+    @if ($videogame->image)
+        <div id="videogame-cover" class="mb-3">
+            <img src="{{ asset('storage/' . $videogame->image) }}" alt="copertina">
+        </div>
+    @endif
+
+
     <div class="d-flex py-4 gap-2">
         <a class="btn btn-outline-warning" href="{{ route('admin.videogames.edit', $videogame) }}">Modifica</a>
         <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">

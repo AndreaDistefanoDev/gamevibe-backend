@@ -7,6 +7,7 @@ use App\Models\Genre;
 use App\Models\Platform;
 use App\Models\Videogame;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class VideogameController extends Controller
 {
@@ -42,6 +43,12 @@ class VideogameController extends Controller
         $newVideogame->description = $data["description"];
         $newVideogame->release_date = $data["release_date"];
         $newVideogame->price = $data["price"];
+
+        if (array_key_exists("cover_image", $data)) {
+
+            $img_url = Storage::putFile('videogames', $data["cover_image"]);
+            $newVideogame->image = $img_url;
+        }
 
         $newVideogame->save();
 
@@ -82,6 +89,13 @@ class VideogameController extends Controller
         $videogame->description = $data["description"];
         $videogame->release_date = $data["release_date"];
         $videogame->price = $data["price"];
+
+
+        if (array_key_exists("cover_image", $data)) {
+
+            $img_url = Storage::putFile('videogames', $data["cover_image"]);
+            $videogame->image = $img_url;
+        }
 
         $videogame->update();
 
