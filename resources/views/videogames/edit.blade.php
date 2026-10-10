@@ -64,7 +64,8 @@
                         <div class="mt-2">
                             <div class="form-text mb-1">Copertina attuale</div>
                             <img src="{{ asset('storage/' . $videogame->image) }}" alt="{{ $videogame->title }}"
-                                class="rounded border object-fit-cover" style="width: 120px; height: 120px">
+                                class="rounded border object-fit-contain bg-body-secondary"
+                                style="width: 100px; height: 150px">
                         </div>
                     @endif
                 </div>

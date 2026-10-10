@@ -27,7 +27,8 @@
                             <td>
                                 @if ($videogame->image)
                                     <img src="{{ asset('storage/' . $videogame->image) }}" alt="{{ $videogame->title }}"
-                                        class="rounded object-fit-cover" style="width: 60px; height: 60px">
+                                        class="rounded object-fit-contain bg-body-secondary"
+                                        style="width: 60px; height: 90px">
                                 @endif
                             </td>
                             <td>{{ $videogame->title }}</td>

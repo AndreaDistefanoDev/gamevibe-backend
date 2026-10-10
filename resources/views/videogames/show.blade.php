@@ -6,13 +6,13 @@
     <div class="card shadow-sm overflow-hidden">
         <div class="row g-0">
             @if ($videogame->image)
-                <div class="col-md-4">
+                <div class="col-md-3 bg-body-secondary">
                     <img src="{{ asset('storage/' . $videogame->image) }}" alt="{{ $videogame->title }}"
-                        class="w-100 h-100 object-fit-cover" style="min-height: 240px">
+                        class="img-fluid w-100 d-block">
                 </div>
             @endif
 
-            <div class="{{ $videogame->image ? 'col-md-8' : 'col-12' }} d-flex flex-column">
+            <div class="{{ $videogame->image ? 'col-md-9' : 'col-12' }} d-flex flex-column">
                 <div class="card-body p-4 d-flex flex-column">
                     <h2 class="card-title mb-3">{{ $videogame->title }}</h2>
 
